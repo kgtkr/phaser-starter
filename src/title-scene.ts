@@ -17,6 +17,9 @@ export class TitleScene extends Phaser.Scene {
   }
 
   update() {
-
+    if (this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE).isDown ||
+      this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER).isDown) {
+      this.scene.start("main");
+    }
   }
 }
