@@ -1,14 +1,17 @@
-/// <reference path="../node_modules/phaser-ce/typescript/phaser.d.ts"/>
-import { MainState } from "./main-state";
+import 'phaser';
+import { MainScene } from "./main-scene";
+import { TitleScene } from "./title-scene";
+import { Config } from "./config";
 
-const game = new Phaser.Game(800, 600, Phaser.AUTO, '');
-game.state.add("mainState", MainState);
-window.onload = () => {
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.refresh();
-    game.state.start("mainState");
-};
-
-window.onresize = () => {
-    game.scale.refresh();
-};
+new Phaser.Game({
+    type: Phaser.AUTO,
+    parent: 'content',
+    width: Config.width,
+    height: Config.height,
+    resolution: 1,
+    backgroundColor: "#fff",
+    scene: [
+        TitleScene,
+        MainScene
+    ]
+});
